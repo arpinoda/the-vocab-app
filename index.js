@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use('/', router);
+app.use('/api', router);
 
 app.use(function (req, res, next) {
     res.status(404).send('Sorry, can\'t find that!');

@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const path = require('path');
-const { wordController } = require('../controllers');
+const { wordController, authController } = require('../controllers');
 
 router.route('/words')
     .get(
@@ -9,6 +8,16 @@ router.route('/words')
     )
     .post(
         wordController.createWord
+    );
+
+router.route('/auth/login/google')
+    .get(
+        authController.createSession
+    );
+
+router.route('/auth/current-session')
+    .get(
+        authController.getCurrentSession
     );
 
 module.exports = router
