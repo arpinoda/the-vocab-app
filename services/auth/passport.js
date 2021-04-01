@@ -1,4 +1,5 @@
-var passport = require('passport');
+const passport = require('passport');
+const { userController } = require('../../controllers');
 
 module.exports = function (app) {
     require('./cookieSession')(app);
@@ -7,11 +8,14 @@ module.exports = function (app) {
     app.use(passport.session());
     
     passport.serializeUser(function (user, done) {
-        done(null, user);
+        done(null, user.id);
     });
     
-    passport.deserializeUser(function (user, done) {
-        done(null, user);
+    passport.deserializeUser(function (id, done) {
+        userController.findById(id)
+            .then(function(user) {
+                done(null, user);
+            });
     });
     
     require('./google.strategy.js')();

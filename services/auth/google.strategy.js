@@ -1,5 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const { userController } = require('../../controllers');
 
 module.exports = function() {
     passport.use(
@@ -9,14 +10,14 @@ module.exports = function() {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         }, async function(req, accessToken, refreshToken, profile, done) {
             try {
-                const existingUser = null;
+                const existingUser = await userController.findByGoogleId(profile.id);
+
                 if (existingUser) {
-                return done(null, existingUser);
+                    return done(null, existingUser);
                 }
-                const user = {
-                    id: 1,
-                    name: 'Dane'
-                }
+
+                const user = await userController.createUser(profile.id, profile.displayName);
+
                 done(null, user);
             } catch (err) {
                 done(err, null);
