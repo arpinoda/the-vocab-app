@@ -10,7 +10,7 @@ function Home() {
                 </p>
                 <a
                     className="App-link"
-                    href={"/api/auth/login/google"}
+                    href={"/auth/google"}
                 >
                     Login With Google
                 </a>

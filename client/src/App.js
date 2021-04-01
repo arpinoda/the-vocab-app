@@ -9,7 +9,7 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    axios.get('/api/auth/current-session').then(({data}) => {
+    axios.get('/auth/current-session').then(({data}) => {
       setUser(data);
     })
   }, [])

@@ -10,7 +10,7 @@ function Profile() {
                 </p>
                 <a
                     className="App-link"
-                    href={"/api/auth/logout"}
+                    href={"/auth/logout"}
                 >
                     Logout
                 </a>
