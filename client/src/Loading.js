@@ -1,13 +1,12 @@
 import React from 'react';
+import { Spinner } from 'reactstrap';
 import './App.css';
 
 function Loading() {
     return (
         <div className="App">
             <header className="App-header">
-                <p>
-                    Loading...
-                </p>
+                <Spinner color="secondary" />
             </header>
         </div>
     );

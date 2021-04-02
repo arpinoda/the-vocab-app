@@ -5,7 +5,7 @@ function onDatabaseError() {
 }
 
 module.exports = function(){
-    require('../models/User');
+    require('../models');
 
     mongoose.promise = global.Promise;
     mongoose.connect(process.env.MONGODB_URI, { 

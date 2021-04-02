@@ -6,7 +6,8 @@ const requireLogin = require('../middlewares/requireLogin');
 router.use(requireLogin);
 
 router.route('/words')
-    .get(wordController.getWords)
+    .get(wordController.getAllWords)
+    .delete(wordController.deleteWord)
     .post(wordController.createWord);
 
 module.exports = router

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
 const User = mongoose.model('User');
+
 module.exports = {
     createUser: function(googleId, name) {
         return new User({
@@ -12,6 +12,6 @@ module.exports = {
         return User.findById(id);
     },
     findByGoogleId: function(googleId) {
-        return User.findOne({ googleId: googleId })
-    }
+        return User.findOne({ googleId: googleId });
+    },
 };
