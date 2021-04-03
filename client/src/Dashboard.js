@@ -37,7 +37,7 @@ function Dashboard({ user }) {
     function onAddNew_tapped() {
         let word = prompt("Please add a word below");
 
-        word = word.trim().toLowerCase();
+        word = word ? word.trim().toLowerCase() : '';
 
         if (word) {
             setIsLoading(true);

@@ -15,7 +15,8 @@ module.exports = function (app) {
         userController.findById(id)
             .then(function(user) {
                 done(null, user);
-            });
+            })
+            .catch(error => done(error, null));
     });
     
     require('./google.strategy.js')();

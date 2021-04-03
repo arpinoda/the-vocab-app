@@ -6,6 +6,7 @@ function onDatabaseError() {
 
 module.exports = function(){
     require('../models');
+    require('../services/cache');
 
     mongoose.promise = global.Promise;
     mongoose.connect(process.env.MONGODB_URI, { 
