@@ -3,7 +3,7 @@
  * "jest.setupFilesAfterEnv"
  */
 
-require('../config')();
+require('../config')(null);
 
 const mongoose = require('mongoose');
 const cache = require('../services/cache');

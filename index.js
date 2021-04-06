@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-require('./config')();
+require('./config')(app);
 require('./services/auth/passport.js')(app);
 
 const PORT = process.env.PORT || 5000;

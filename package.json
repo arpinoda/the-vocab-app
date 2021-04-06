@@ -11,10 +11,11 @@
     "testEnvironment": "node"
   },
   "scripts": {
-    "start": "node --trace-warnings index.js",
+    "start": "node index.js",
     "client": "npm run start --prefix client",
     "server": "nodemon index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "test": "jest"
   },
   "repository": {
