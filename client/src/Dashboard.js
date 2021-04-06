@@ -7,9 +7,10 @@ function Dashboard({ user }) {
     let [isLoading, setIsLoading] = useState(true);
     let [words, setWords] = useState([]);
 
-    function handleError(error) {
-        if(error.response) { 
-            alert(error.response.data)
+    function handleError(err) {
+        if(err.response) { 
+            const { error } = err.response.data;
+            alert(error)
             setIsLoading(false);
         }    
     }
@@ -65,9 +66,9 @@ function Dashboard({ user }) {
                     <h3>My Words</h3>
                     <ul>
                         {words.map(word => (
-                            <li key={word.value}>
-                                {word.value}
-                                <button id={word._id} onClick={()=> onDelete_tapped(word._id) }>x</button>
+                            <li id={word.value} key={word.value}>
+                                <div>{word.value}</div>
+                                <button id={`delete-${word.value}`} onClick={()=> onDelete_tapped(word._id) }>x</button>
                             </li>
                         ))}
                     </ul>
@@ -77,9 +78,9 @@ function Dashboard({ user }) {
             {!isLoading && words.length === 0 && (
                 <Container className="h-100">
                     <Row className="h-100 justify-content-center align-items-center">
-                        <Col sm="12" style={{ top: '40%' }} className="position-absolute top-50 text-center">
+                        <Col sm="12" style={{ top: '40%' }} className="instruction position-absolute top-50 text-center">
                             <p>Welcome!</p>
-                            <p>Tap + above to add a word</p>
+                            <p className="subtitle">Tap + above to add a word</p>
                         </Col>
                     </Row>
                 </Container>

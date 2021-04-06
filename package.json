@@ -4,6 +4,12 @@
   "description": "",
   "main": "index.js",
   "private": true,
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./tests/setup.js"
+    ],
+    "testEnvironment": "node"
+  },
   "scripts": {
     "start": "node --trace-warnings index.js",
     "client": "npm run start --prefix client",

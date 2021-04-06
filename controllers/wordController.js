@@ -11,7 +11,7 @@ module.exports = {
         try {
             userExistingWord = await Word.find({ user: user.id, value: word });
         } catch (error) {
-            res.status(500).send('An error occurred, please try again');
+            res.status(500).send({ error: 'An error occurred, please try again'});
             return next(error);
         }
         
@@ -31,8 +31,7 @@ module.exports = {
             }
         } else {
             let message = `${word} already exists. Save failed`;
-            res.status(400).send(message);
-            next(new Error(message));
+            res.status(400).send({ error: message});
         }
         
     },
@@ -44,7 +43,7 @@ module.exports = {
             let result = await Word.findByIdAndDelete(id);
             res.json(result);
         } catch (error) {
-            res.status(500).send('An error occurred, please try again');
+            res.status(500).send({ error: 'An error occurred, please try again'});
             next(error);
         }
     },
@@ -57,7 +56,7 @@ module.exports = {
 
             res.json(words);
         } catch (error) {
-            res.status(500).send('An error occurred, please try again');
+            res.status(500).send({ error: 'An error occurred, please try again' });
             next(error);
         }
     },

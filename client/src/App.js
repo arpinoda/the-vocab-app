@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './App.css';
-import Home from "./Home";
+import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Loading from "./Loading";
 
@@ -20,7 +20,7 @@ function App() {
   if (user) {
     return <Dashboard user={user}/>
   }
-  return <Home/>
+  return <Login/>
 }
 
 export default App;

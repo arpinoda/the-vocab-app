@@ -54,5 +54,15 @@ mongoose.Query.prototype.exec = async function() {
 module.exports = {
     clearHash: function(hashKey) {
         client.del(JSON.stringify(hashKey));
+    },
+    disconnect: async function () {
+        await new Promise((resolve) => {
+            client.quit(() => {
+                resolve();
+            });
+        });
+        // redis.quit() creates a thread to close the connection.
+        // We wait until all threads have been run once to ensure the connection closes.
+        await new Promise(resolve => setImmediate(resolve));
     }
 };
