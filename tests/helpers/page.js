@@ -54,18 +54,18 @@ class CustomPage {
     }
 
     get(path) {
-        return this.restRequest(path, null, 'GET');
+        return this.fetch(path, { dataObj: null, method: 'GET' } );
     }
 
     post(path, dataObj) {
-        return this.restRequest(path, dataObj, 'POST');
+        return this.fetch(path, { dataObj, method: 'POST' });
     }
 
     delete(path, dataObj) {
-        return this.restRequest(path, dataObj, 'DELETE');
+        return this.fetch(path, { dataObj, method: 'DELETE' });
     }
 
-    restRequest(path, dataObj, method) {
+    fetch(path, { dataObj, method }) {
         return this.page.evaluate((_path, _data, _method) => {
             return fetch(_path, {
                 method: _method,
