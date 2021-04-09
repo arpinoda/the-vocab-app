@@ -18,7 +18,7 @@ afterEach(async () => {
 
 describe('When not logged in', () => {
     test('Can see the login link', async () => {
-        const selector = 'a.App-link';
+        const selector = 'a.link';
         await page.waitForSelector(selector);
         const text = await page.getContentsOf(selector);
         expect(text).toEqual('Login With Google');
@@ -26,7 +26,7 @@ describe('When not logged in', () => {
 
     describe('When click oAuth login link', () => {
         test('URL matches expected oAuth provider url', async () => {
-            const selector = 'a.App-link';
+            const selector = 'a.link';
             await page.waitForSelector(selector);
             await page.click(selector);
             const url = await page.url();
@@ -55,26 +55,6 @@ describe('When logged in', () => {
             const text = await page.getContentsOf(selector);
 
             expect(text).toEqual('Tap + above to add a word');
-        });
-    });
-
-    describe('When word list is NOT empty', () => {
-        test('Can see Word List Header', async () => {
-            const buttonSelector = 'button';
-                
-            const word = 'test_word_list_header_' + new Date().getTime();
-            const wordSelector = '[id=\"' + word + '\"] div';
-
-            page.on('dialog', async dialog => {
-                await dialog.accept(word);
-            });
-
-            await page.waitForSelector(buttonSelector);
-            await page.click(buttonSelector);
-
-            await page.waitForSelector(wordSelector);
-            const text = await page.getContentsOf('h3');
-            expect(text).toEqual('My Words');
         });
     });
 });

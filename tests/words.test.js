@@ -61,10 +61,10 @@ describe('When logged in', () => {
 
         describe('When using valid input', () => {
             test('Clicking "OK" adds new word to the list', async () => {
-                const buttonSelector = 'button';
+                const buttonSelector = '[id="btn-new-word"]';
                 
                 const word = 'test_word_valid_input_' + new Date().getTime();
-                const wordSelector = '[id=\"' + word + '\"] div';
+                const wordSelector = '[data-value=\"' + word + '\"]';
 
                 page.on('dialog', async dialog => {
                     await dialog.accept(word);
@@ -114,12 +114,12 @@ describe('When logged in', () => {
 
     describe('When word list is NOT empty', () => {
         test('Can delete existing word', async () => {
-            // Create the new word via GUI
-            const buttonSelector = 'button';
-                
             const word = 'test_word_valid_input_' + new Date().getTime();
-            const wordSelector = '[id=\"' + word + '\"] div';
-
+            const wordSelector = '[data-value=\"' + word + '\"]';
+            
+            const buttonSelector = '[id="btn-new-word"]';
+            
+            // Create the new word via GUI
             page.on('dialog', async dialog => {
                 await dialog.accept(word);
             });
@@ -130,7 +130,7 @@ describe('When logged in', () => {
             await page.waitForSelector(wordSelector);
 
             // Delete the word
-            const deleteSelector = `[id="delete-${word}"]`;
+            const deleteSelector = '[data-value=\"delete-' + word + '\"]';
             await page.click(deleteSelector);
 
             await page.waitForTimeout(500);

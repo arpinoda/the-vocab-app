@@ -16,7 +16,6 @@ module.exports = {
         }
         
         if (userExistingWord.length === 0) {
-            // Does not exist, create new word
             let newWord = new Word({
                 value: word,
                 user: user.id,
@@ -26,7 +25,7 @@ module.exports = {
                 newWord = await newWord.save();
                 res.json(newWord);
             } catch (error) {
-                res.status(403).send(`Save failed for ${word}`);
+                res.status(403).send({ error:`Save failed for ${word}`});
                 next(error);
             }
         } else {
@@ -55,6 +54,7 @@ module.exports = {
                 .cache({ key: req.user.id });
 
             res.json(words);
+
         } catch (error) {
             res.status(500).send({ error: 'An error occurred, please try again' });
             next(error);
