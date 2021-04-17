@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
 module.exports = {
-    createUser: function(googleId, name) {
+    createUser: function({googleId, displayName, photo, email}) { console.log(googleId)
         return new User({
-            googleId: googleId,
-            displayName: name,
+            googleId,
+            displayName,
+            photo,
         }).save();
     },
     findById: function(id) {

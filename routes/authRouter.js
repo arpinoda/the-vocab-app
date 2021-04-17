@@ -4,7 +4,7 @@ var passport = require('passport');
 
 authRouter.route('/google')
     .get(passport.authenticate('google', {
-        scope: ['profile', 'email']
+        scope: ['profile']
     }));
 
 authRouter.route('/google/callback')

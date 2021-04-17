@@ -17,16 +17,16 @@ afterEach(async () => {
 });
 
 describe('When not logged in', () => {
-    test('Can see the login link', async () => {
-        const selector = 'a.link';
+    test('Can see the Google login button', async () => {
+        const selector = 'button.google-strategy span';
         await page.waitForSelector(selector);
         const text = await page.getContentsOf(selector);
-        expect(text).toEqual('Login With Google');
+        expect(text).toEqual('Login with Google');
     });
 
     describe('When click oAuth login link', () => {
         test('URL matches expected oAuth provider url', async () => {
-            const selector = 'a.link';
+            const selector = 'button.google-strategy';
             await page.waitForSelector(selector);
             await page.click(selector);
             const url = await page.url();
@@ -54,7 +54,7 @@ describe('When logged in', () => {
             await page.waitForSelector(selector);
             const text = await page.getContentsOf(selector);
 
-            expect(text).toEqual('Tap + above to add a word');
+            expect(text).toEqual('Add a word to get started 🤓');
         });
     });
 });

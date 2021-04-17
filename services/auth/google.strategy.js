@@ -11,12 +11,20 @@ module.exports = function() {
         }, async function(req, accessToken, refreshToken, profile, done) {
             try {
                 const existingUser = await userController.findByGoogleId(profile.id);
-
+                
                 if (existingUser) {
                     return done(null, existingUser);
                 }
 
-                const user = await userController.createUser(profile.id, profile.displayName);
+                let photo = '';
+
+                const { id, displayName, photos } = profile;
+
+                if (photos.length > 0) {
+                    photo = photos[0].value;
+                }
+
+                const user = await userController.createUser({googleId: id, displayName, photo});
 
                 done(null, user);
             } catch (err) {

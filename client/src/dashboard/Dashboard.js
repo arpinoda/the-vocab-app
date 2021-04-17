@@ -1,23 +1,31 @@
-import React, { Suspense } from 'react';
+import React from 'react';
+import { WordAPI } from '../api';
+import { useAppState } from '../common';
 
-import { ErrorBoundary } from '../common';
-import { ErrorFallback, Loading } from './';
+const Instruction = React.lazy(() => import('./Instruction'));
+const Toolbar = React.lazy(() => import('./Toolbar'));
+const Deck = React.lazy(() => import('./Deck'));
 
-const CardCollection = React.lazy(() => import('../dashboard/CardCollection'));
-const Header = React.lazy(() => import('../dashboard/Header'));
+const resource = WordAPI.getWords();
 
-const Dashboard = () => (
-    <>
-        <Header />
-        <ErrorBoundary 
-            fallback={ErrorFallback}
-            onRetry={() => window.location.reload()}
-        >
-            <Suspense fallback={<Loading />}>
-                <CardCollection />
-            </Suspense>
-        </ErrorBoundary>
-    </>
-);
+const Dashboard = () => {
+    resource.read();
+    const { words, user } = useAppState();
+    
+    const nameParts = user.displayName.split(' ');
+    let firstName = user.displayName;
+
+    if (nameParts.length > 0) {
+        firstName = nameParts[0];
+    }
+
+    return (
+        <>
+            <Toolbar />
+            { words.length > 0 && <Deck data={words} /> }
+            { words && words.length === 0 && <Instruction firstName={firstName}/> }
+        </>
+    );
+};
 
 export default Dashboard;

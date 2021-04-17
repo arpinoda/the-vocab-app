@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-function onDatabaseError() {
-    console.log('Unable to connect to mongo db');
+function onDatabaseError(error) {
+    console.log(`Unable to connect to mongo db - ${error}`);;
 }
 
 module.exports = function(){
@@ -12,7 +12,7 @@ module.exports = function(){
     mongoose.connect(process.env.MONGODB_URI, { 
         useNewUrlParser: true,
         useUnifiedTopology: true,
-    });
+    }).catch(onDatabaseError);
 
     const db = mongoose.connection;
 

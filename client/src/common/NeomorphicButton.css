@@ -1,0 +1,25 @@
+.neo-button{
+    border-style: none;
+    outline:0;
+    color: rgba(51,49,59,0.70);
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 40px;
+    box-shadow: 
+    3px 3px 8px rgba(0, 0, 0, 0.08), -3px -3px 8px rgba(255, 255, 255, 1);
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    font-size: 0.4em;
+    min-width: '20vh';
+}
+.neo-button span {
+    padding-left:0.5rem;
+    font-family: 'Cabin', 'serif';
+}
+.neo-button:active{
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.06),
+    inset -3px -3px 9px rgba(255, 255, 255, 1);
+    color: rgba(51,49,59,0.5);
+}

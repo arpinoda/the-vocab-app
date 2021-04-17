@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from 'reactstrap';
+import { NeomorphicButton } from '../common';
 import { WordAPI } from '../api';
 
 const Toolbar = () => {
@@ -19,9 +19,9 @@ const Toolbar = () => {
             .then(() => setIsSaving(false))
             .catch(handleError);
     }
-
+    
     const showPrompt = () => {
-        let word = prompt("Please add a word below");
+        let word = window.prompt("Enter your word below");
         word = word ? word.trim().toLowerCase() : '';
         
         if (word) {
@@ -30,9 +30,15 @@ const Toolbar = () => {
     }
 
     return (
-        <Button id="btn-new-word" disabled={isSaving} onClick={showPrompt}>
-            { isSaving ? 'Saving ...' : '+ New Word' }
-        </Button>
+        <div style={{ left: '50%', zIndex:5 }} className="position-absolute pt-3 deck-toolbar"> 
+            <NeomorphicButton
+                className='add-new-word'
+                onClick={showPrompt}
+                faIcon='fas fa-plus'
+                style={{ marginLeft: '-50%'}}
+                text={ isSaving ? 'Saving ...' : 'Add a word' }
+            />
+        </div>
     );
 }
 

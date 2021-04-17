@@ -1,0 +1,127 @@
+.deck-card {
+  position: absolute;
+  will-change: transform, opacity;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3);
+}
+
+.deck-card .front {
+  color: #ffffff;
+}
+
+.deck-card .title, .deck-card .subtitle {
+  text-transform: lowercase;
+}
+.deck-card .title {
+  font-weight:bold;
+}
+.deck-card .subtitle {
+  font-family: 'Source Sans Pro';
+  font-size: 60%;
+}
+.deck-card .bottom-button {
+  background: transparent;
+  border: none;
+  font-size: 45%;
+  position: absolute;
+  bottom: 0;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  letter-spacing: 0px;
+}
+.deck-card .delete-button {
+  left: 0.8rem;
+  opacity:15%;
+}
+.deck-card .url-button {
+  right: 0.8rem;
+  color:rgba(0,0,0,0.45);
+}
+.deck-card .synonym {
+  display: inline-block;
+  padding: 5px 20px;
+  margin: 3px;
+  background-color: rgba(0, 0, 0, 0.07);
+  border-radius: 20px;
+}
+.pulse {
+  animation: pulse 700ms infinite;
+  animation-direction: alternate;
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+}
+
+.truncate-overflow {
+  --max-lines: 5;
+  max-height: calc(2rem * var(--max-lines));
+  overflow: hidden;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.7);
+  }
+}
+    
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.7);
+  }
+}
+
+@media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */ 
+  .deck-card {
+    width: 85vw;
+    height: 80vh;
+    max-height:340px;
+  }
+}
+@media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }
+@media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
+  #deck {
+    width:60%;
+  }
+  .deck-toolbar{
+    right: 0!important;
+    left: unset!important;
+    top:50%;
+  }
+  .deck-toolbar button{
+    margin-left:unset!important;
+    margin-top:-50%;
+  }
+  .deck-card {
+    width: 85vw;
+    max-width:420px;
+    height: 90vh;
+  }
+}
+@media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+  #deck {
+    width:100%;
+  }
+  .deck-toolbar{
+    left: 50%!important;
+    right:unset!important;
+    top:0;
+  }
+  .deck-toolbar button{
+    margin-left:-50%!important;
+    margin-top:unset!important;
+  }
+  .deck-card {
+    width: 65vh;
+    max-width: 550px;
+    height: 50vh;
+    max-height: 430px;
+  }
+}
+/* @media (min-width:1025px) { big landscape tablets, laptops, and desktops } */
+/* @media (min-width:1281px) { hi-res laptops and desktops } */

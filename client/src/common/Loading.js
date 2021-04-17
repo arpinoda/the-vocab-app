@@ -1,8 +1,10 @@
 import React from 'react';
-import { Spinner } from 'reactstrap';
 import './Loading.css';
 
-const Loading = () => 
-    <Spinner className="absolute-center" color="secondary" />;
+const Loading = () => (
+    <div className="holder">
+        <div className="loader"></div>
+    </div>
+);
 
 export default Loading;

@@ -7,6 +7,16 @@ const Page = require('./helpers/page');
 let page;
 const PAGE_URL = 'http://localhost:3000';
 
+const isInViewport = function (elem) {
+    var bounding = elem.boundingBox();
+    return (
+        bounding.y >= 0 &&
+        bounding.x >= 0 &&
+        (bounding.y + bounding.height) <= (window.innerHeight || document.documentElement.clientHeight) &&
+        (bounding.x + bounding.width) <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+};
+
 beforeEach(async () => {
     page = await Page.build();
     await page.goto(PAGE_URL);
@@ -45,7 +55,7 @@ describe('When logged in', () => {
 
     describe('When click "Add New Word" button', () => {
         test('Can see window.prompt message', async () => {
-            const selector = 'button';
+            const selector = '.add-new-word';
             let dialogMessage;
 
             page.on('dialog', async dialog => {
@@ -56,15 +66,15 @@ describe('When logged in', () => {
             await page.waitForSelector(selector);
             await page.click(selector);
 
-            expect(dialogMessage).toEqual('Please add a word below');
+            expect(dialogMessage).toEqual('Enter your word below');
         });
 
         describe('When using valid input', () => {
             test('Clicking "OK" adds new word to the list', async () => {
-                const buttonSelector = '[id="btn-new-word"]';
+                const buttonSelector = '.add-new-word';
                 
-                const word = 'test_word_valid_input_' + new Date().getTime();
-                const wordSelector = '[data-value=\"' + word + '\"]';
+                const word = 'hello'
+                const wordSelector = '[data-value=\"' + word + '\"] .title';
 
                 page.on('dialog', async dialog => {
                     await dialog.accept(word);
@@ -81,7 +91,7 @@ describe('When logged in', () => {
 
         describe('When using empty input', () => {
             test('Clicking "OK" causes NO network request', async () => {
-                const buttonSelector = 'button';
+                const buttonSelector = '.add-new-word';
                 const word = '';
 
                 let requestCount = 0;
@@ -103,27 +113,26 @@ describe('When logged in', () => {
 
         describe('When using existing word', () => {
             test('Issuing a POST request returns an error', async () => {
-                const word = 'test_word_existing_' + new Date().getTime();
+                const word = 'welcome';
                 await page.post('/api/words', { word });
                 const result = await page.post('/api/words', { word });                
 
-                expect(result).toEqual({ error: `${word} already exists. Save failed` });
+                expect(result).toEqual({ error: `"${word}" already exists. Save failed.` });
             });
         });
     });
 
     describe('When word list is NOT empty', () => {
         test('Can delete existing word', async () => {
-            const word = 'test_word_valid_input_' + new Date().getTime();
+            const word = 'example';
             const wordSelector = '[data-value=\"' + word + '\"]';
             
-            const buttonSelector = '[id="btn-new-word"]';
+            const buttonSelector = '.add-new-word';
             
             // Create the new word via GUI
             page.on('dialog', async dialog => {
                 await dialog.accept(word);
             });
-
             await page.waitForSelector(buttonSelector);
             await page.click(buttonSelector);
 
@@ -132,16 +141,12 @@ describe('When logged in', () => {
             // Delete the word
             const deleteSelector = '[data-value=\"delete-' + word + '\"]';
             await page.click(deleteSelector);
+            
+            await page.waitForTimeout(1000);
 
-            await page.waitForTimeout(500);
-            await page.waitForSelector(deleteSelector, { hidden: true});
-
-            try {
-                await page.getContentsOf(deleteSelector);
-            } catch (error) {
-                expect(error.message).toMatch('failed to find element matching selector');
-            }
-
+            const card = await page.waitForSelector(deleteSelector);
+            
+            expect(isInViewport(card)).toEqual(false);
         });
     });
 });

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Word = mongoose.model('Word');
+const dictionaryApi = require('../services/dictionaryApi');
 
 module.exports = {
 
@@ -16,20 +17,34 @@ module.exports = {
         }
         
         if (userExistingWord.length === 0) {
-            let newWord = new Word({
-                value: word,
-                user: user.id,
-            });
-            
+
             try {
-                newWord = await newWord.save();
-                res.json(newWord);
+                const response = await dictionaryApi.getEntry(word);
+                if (response.status === 404) {
+                    const message = 'We couldn\'t find "' + word + '" in the dictionary. ' +
+                    'Plase check your spelling and try again.'; 
+                    res.status(404).send({ error: message});
+                } else {
+                    let newWord = new Word({
+                        value: word,
+                        user: user.id,
+                    });
+                    
+                    try {
+                        newWord = await newWord.save();
+                        res.json(newWord);
+                    } catch (error) {
+                        res.status(403).send({ error:`Save failed for ${word}`});
+                        next(error);
+                    }
+                }
             } catch (error) {
-                res.status(403).send({ error:`Save failed for ${word}`});
+                res.status(403).send({ error:`Could not lookup entry for ${word} via api`});
                 next(error);
             }
+
         } else {
-            let message = `${word} already exists. Save failed`;
+            let message = `"${word}" already exists. Save failed.`;
             res.status(400).send({ error: message});
         }
         
@@ -52,9 +67,8 @@ module.exports = {
             const words = await Word
                 .find({ user : req.user.id })
                 .cache({ key: req.user.id });
-
+            
             res.json(words);
-
         } catch (error) {
             res.status(500).send({ error: 'An error occurred, please try again' });
             next(error);
