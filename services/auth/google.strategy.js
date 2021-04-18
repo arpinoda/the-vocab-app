@@ -8,6 +8,7 @@ module.exports = function() {
             callbackURL: '/auth/google/callback',
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            proxy: true,
         }, async function(req, accessToken, refreshToken, profile, done) {
             try {
                 const existingUser = await userController.findByGoogleId(profile.id);
