@@ -1,10 +1,15 @@
 import React from 'react';
-import './Loading.css';
+import { Spinner } from 'reactstrap';
+
+const style = {
+    left: '50%',
+    top: '50%',
+    marginLeft: '-1rem',
+    marginTop: '-1rem'
+};
 
 const Loading = () => (
-    <div className="holder">
-        <div className="loader"></div>
-    </div>
+    <Spinner type="grow" style={style} className="position-absolute" color="secondary" />
 );
 
 export default Loading;

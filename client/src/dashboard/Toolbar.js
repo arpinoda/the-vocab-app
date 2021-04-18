@@ -37,7 +37,8 @@ const Toolbar = () => {
                 disabled={isSaving}
                 faIcon='fas fa-plus'
                 style={{ marginLeft: '-50%', backgroundColor:'#ebf3fa'}}
-                text={ isSaving ? 'Adding ...' : 'Add a word' }
+                text={ isSaving ? 'Adding word' : 'Add a word' }
+                
             />
         </div>
     );

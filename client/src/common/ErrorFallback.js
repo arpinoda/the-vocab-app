@@ -1,5 +1,4 @@
 import React from 'react';
-// import './Loading.css'
 
 const ErrorFallback = ({ error, resetErrorBoundary }) => (
     <div onClick={resetErrorBoundary} className="absolute-center card-image loading-failed">
