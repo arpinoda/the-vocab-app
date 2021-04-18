@@ -1,7 +1,8 @@
 import React from 'react';
+import { NeomorphicButton } from './';
 
 const ErrorFallback = ({ error, resetErrorBoundary }) => (
-    <div onClick={resetErrorBoundary} className="absolute-center card-image loading-failed">
+    <div className="absolute-center card-image loading-failed">
         <div className="w-100 text-center text-secondary vertical-center">
             
             <h5 className="w-100">
@@ -10,9 +11,13 @@ const ErrorFallback = ({ error, resetErrorBoundary }) => (
             <h6>
                 ({error.message})
             </h6>
-            <h5 className="w-100 text-primary">
-                Tap to reload
-            </h5>
+            <NeomorphicButton
+                className='mt-3 text-primary'
+                faIcon='fas'
+                onClick={resetErrorBoundary}
+                style={{ minWidth: '20rem'}}
+                text='Tap to reload'
+            />
         </div>
     </div>
 );

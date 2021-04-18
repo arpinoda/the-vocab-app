@@ -39,7 +39,7 @@ module.exports = {
             // Check if the API returns an entry for this word
             if (response.status === 404) {
                 const message = 'We couldn\'t find "' + word + '" in the dictionary. ' +
-                'Plase check your spelling and try again.'; 
+                'Please check your spelling and try again.'; 
                 return res.status(404).send({ error: message});
             } else {
 
