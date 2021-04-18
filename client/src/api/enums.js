@@ -1,5 +1,5 @@
 const endpoints = {
-    AUTH: '/auth/current-session',
+    AUTH: '/auth',
     DICTIONARY: 'https://api.dictionaryapi.dev/api/v2/entries/en_US',
     WORD: '/api/words'
 }

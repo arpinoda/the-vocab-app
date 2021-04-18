@@ -32,7 +32,6 @@ class AxiosResponseInterceptor {
         // onDispatch() to update the App's state
         handlers.forEach(handler => {
             this.dispatch(handler.onDispatch(data));
-            console.log(`${handler.method} ${handler.endpoint} state updated`)
         });
     
         return response;

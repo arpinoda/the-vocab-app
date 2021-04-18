@@ -23,7 +23,7 @@ body {
 .dropdown-menu {
   box-shadow: 0px 20px 20px -3px rgb(50 50 73 / 11%);
   border:none;
-  background-color: transparent;
+  background-color: #ebf3fa;
 }
 
 .dropdown-item.active, .dropdown-item:active,

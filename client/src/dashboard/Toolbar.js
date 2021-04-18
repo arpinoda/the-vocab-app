@@ -30,13 +30,14 @@ const Toolbar = () => {
     }
 
     return (
-        <div style={{ left: '50%', zIndex:5 }} className="position-absolute pt-3 deck-toolbar"> 
+        <div style={{ left: '50%', zIndex:2 }} className="position-absolute pt-3 deck-toolbar"> 
             <NeomorphicButton
                 className='add-new-word'
                 onClick={showPrompt}
+                disabled={isSaving}
                 faIcon='fas fa-plus'
-                style={{ marginLeft: '-50%'}}
-                text={ isSaving ? 'Saving ...' : 'Add a word' }
+                style={{ marginLeft: '-50%', backgroundColor:'#ebf3fa'}}
+                text={ isSaving ? 'Adding ...' : 'Add a word' }
             />
         </div>
     );

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
 module.exports = {
-    createUser: function({googleId, displayName, photo, email}) { console.log(googleId)
+    createUser: function({ googleId, displayName, photo }) {
         return new User({
             googleId,
             displayName,

@@ -8,7 +8,7 @@ const Header = () => {
     const toggle = () => setDropdownOpen(current => !current);
 
     const navStyle = { 
-        zIndex: 1,
+        zIndex: 3,
         fontSize: '60%',
         letterSpacing: 'initial',
         color:'rgba(0,0,0,0.5)',
@@ -18,7 +18,7 @@ const Header = () => {
         <Navbar style={navStyle} className="position-absolute">
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                 <DropdownToggle nav className="text-right">
-                    <NavbarText><img className="w-50 rounded-circle opacity-3" src={user.photo} alt={user.displayName} /></NavbarText>
+                    <NavbarText><img className="rounded-circle opacity-3" style={{ maxWidth: '48px'}} src={user.photo} alt={user.displayName} /></NavbarText>
                 </DropdownToggle>
                 <DropdownMenu>
                     <DropdownItem header>{user.displayName}</DropdownItem>

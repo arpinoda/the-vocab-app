@@ -18,7 +18,7 @@
     padding-left:0.5rem;
     font-family: 'Cabin', 'serif';
 }
-.neo-button:active{
+.neo-button:active, .neo-button:disabled{
     box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.06),
     inset -3px -3px 9px rgba(255, 255, 255, 1);
     color: rgba(51,49,59,0.5);
