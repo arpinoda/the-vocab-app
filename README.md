@@ -1,13 +1,16 @@
 # Vocabulary App 🤓 📚
 
+\
 A web-based “flash card app” created using React.js, Node.js / Express.js, MongoDB, and Redis.
-
-![Animated GIF demo of the app](docs/demo.gif)
+\
+\
+<img src="docs/demo.gif" alt="Animated GIF demo of the app" width="500" />
 
 ## Demos
-https://the-vocab-app.herokuapp.com/
 
-![Scan this QR code to visit the site on your mobile device](docs/qrcode.png)
+#### https://the-vocab-app.herokuapp.com/
+
+<img src="docs/qrcode.png" alt="Scan this QR Code to visit the site via mobile" width="250" />
 
 ## Installation
 
@@ -45,6 +48,8 @@ REDIS_URL=
 ```
 The solution runs end-to-end integration tests using [Jest](https://jestjs.io/) and [Puppeteer](https://github.com/puppeteer/puppeteer). Commits are synched with [Travis CI](https://www.travis-ci.com/), which builds, tests, and deploys to [Heroku](https://www.heroku.com/).
 
+### Early test cases
+![Continuous Integration Test Cases](docs/test-cases.png)
 
 ## Miscellaneous
 - Supports Google oAuth 2 and Local authentication strategies using Passport.js middleware.
