@@ -8,9 +8,11 @@ import { AppStateProvider , ErrorBoundary, ErrorFallback } from './common';
 
 const App = React.lazy(() => import('./App'));
 
+const reloadPage = () => window.location.reload();
+
 ReactDOM.render(
   <React.StrictMode>
-    <ErrorBoundary fallback={ErrorFallback} onRetry={() => window.location.reload()}>
+    <ErrorBoundary fallback={ErrorFallback} onRetry={reloadPage}>
       <Suspense fallback={<Loading />}>
         <AppStateProvider>
           <App />

@@ -21,7 +21,7 @@ const Toolbar = () => {
     }
     
     const showPrompt = () => {
-        let word = window.prompt("Enter your word below");
+        let word = window.prompt('Enter your word below');
         word = word ? word.trim().toLowerCase() : '';
         
         if (word) {
@@ -30,15 +30,14 @@ const Toolbar = () => {
     }
 
     return (
-        <div style={{ left: '50%', zIndex:2 }} className="position-absolute pt-3 deck-toolbar"> 
+        <div style={{ left: '50%', zIndex:2 }} className='position-absolute pt-3 deck-toolbar'> 
             <NeomorphicButton
                 className='add-new-word'
                 onClick={showPrompt}
                 disabled={isSaving}
                 faIcon='fas fa-plus'
                 style={{ marginLeft: '-50%', backgroundColor:'#ebf3fa'}}
-                text={ isSaving ? 'Adding word' : 'Add a word' }
-                
+                text={ isSaving ? 'Adding word' : 'Add any word' }  
             />
         </div>
     );

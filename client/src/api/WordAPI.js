@@ -27,7 +27,7 @@ function getWords() {
         .then(res => res.data);
 
     // Wrapping will throw promise
-    // This particular endpoint is called within Suspense
+    // Used in conjunction with <Suspense /> components
     return wrapPromise(promise);
 }
 

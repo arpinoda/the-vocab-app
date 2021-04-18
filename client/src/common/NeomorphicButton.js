@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './NeomorphicButton.css';
 
 const NeomorphicButton = ({ 
@@ -25,5 +26,15 @@ const NeomorphicButton = ({
         {children}
     </button>
 );
+
+NeomorphicButton.propTypes = {
+    className: PropTypes.string,
+    children: PropTypes.node,
+    disabled: PropTypes.bool,
+    faIcon: PropTypes.string,
+    onClick: PropTypes.func,
+    style: PropTypes.object,
+    text: PropTypes.string,
+}
 
 export default NeomorphicButton;

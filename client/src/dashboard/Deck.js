@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useSprings } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import { CardWrapper } from './Card';
@@ -183,5 +184,9 @@ const Deck = ({ data = [] }) => {
     );
 
 } // --- end Deck
+
+Deck.propTypes = {
+    data: PropTypes.array,
+};
 
 export default Deck;

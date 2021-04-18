@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useSpring, animated, to as interpolate } from 'react-spring';
 import { DictionaryAPI } from '../../api';
 import { CardFront, CardBack } from './';
@@ -162,5 +163,17 @@ const CardWrapper = ({backgroundColor, data, drag, i, rot, rotX, scale, x, y}) =
         </animated.div>
     );
 }
+
+CardWrapper.propTypes = {
+    backgroundColor: PropTypes.string,
+    data: PropTypes.object,
+    drag: PropTypes.func,
+    i: PropTypes.number,
+    rot: PropTypes.number,
+    rotX: PropTypes.number,
+    scale: PropTypes.number,
+    x: PropTypes.number,
+    y: PropTypes.number,
+};
 
 export default CardWrapper;

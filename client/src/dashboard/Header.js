@@ -15,15 +15,27 @@ const Header = () => {
         right: '0px',
     }
     return (
-        <Navbar style={navStyle} className="position-absolute">
+        <Navbar style={navStyle} className='position-absolute'>
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                <DropdownToggle nav className="text-right">
-                    <NavbarText><img className="rounded-circle opacity-3" style={{ maxWidth: '48px'}} src={user.photo} alt={user.displayName} /></NavbarText>
+                <DropdownToggle nav className='text-right'>
+                    <NavbarText>
+                        <img 
+                            className='rounded-circle opacity-3'
+                            style={{ maxWidth: '48px'}}
+                            src={user.photo}
+                            alt={user.displayName} 
+                        />
+                    </NavbarText>
                 </DropdownToggle>
                 <DropdownMenu>
                     <DropdownItem header>{user.displayName}</DropdownItem>
                     <DropdownItem>
-                        <NavLink className="text-dark" href="/auth/logout">Log Out</NavLink>
+                        <NavLink
+                            className='text-dark'
+                            href='/auth/logout'
+                        >
+                            Log Out
+                        </NavLink>
                     </DropdownItem>
                 </DropdownMenu>
             </Dropdown>

@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NeomorphicButton } from './';
 
 const ErrorFallback = ({ error, resetErrorBoundary }) => (
-    <div className="absolute-center card-image loading-failed">
-        <div className="w-100 text-center text-secondary vertical-center">
+    <div className='absolute-center card-image loading-failed'>
+        <div className='w-100 text-center text-secondary vertical-center'>
             
-            <h5 className="w-100">
+            <h5 className='w-100'>
                 Uh oh, something went wrong.
             </h5>
             <h6>
@@ -21,5 +22,10 @@ const ErrorFallback = ({ error, resetErrorBoundary }) => (
         </div>
     </div>
 );
+
+ErrorFallback.propTypes = {
+    error: PropTypes.object,
+    resetErrorBoundary: PropTypes.func,
+};
 
 export default ErrorFallback;

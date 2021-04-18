@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Card } from './';
 
 const CardFront = (props) => {
@@ -17,6 +18,12 @@ const CardFront = (props) => {
             </div>
         </Card>
     );
+};
+
+CardFront.propTypes = {
+    word: PropTypes.string,
+    phoneticText: PropTypes.string,
+    children: PropTypes.node,
 };
 
 export default CardFront;

@@ -82,7 +82,10 @@ const axiosInterceptor = new AxiosResponseInterceptor([
  AppState.displayName = 'AppState';
  Dispatch.displayName = 'Dispatch';
 
+ // One context for managing state (user and words)
  export const useAppState = () => React.useContext(AppState);
+
+ // Another context when needing to dispatch updates
  export const useDispatch = () => React.useContext(Dispatch);
 
  export const AppStateProvider = ({ children }) => {

@@ -1,13 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ErrorBoundary extends React.Component {
     constructor(props) {
         super(props)
         this.state = { error: null, errorInfo: null }
-    }
-
-    static defaultProps = {
-        fallback: <h1>Something went wrong.</h1>,
     }
 
     static getDerivedStateFromError(error) {
@@ -38,6 +35,15 @@ class ErrorBoundary extends React.Component {
 
         return this.props.children
     }
+}
+
+ErrorBoundary.defaultProps = {
+    fallback: <h1>Something went wrong.</h1>,
+}
+
+ErrorBoundary.propTypes = {
+    fallback: PropTypes.instanceOf(Element),
+    onRetry: PropTypes.func,
 }
 
 export default ErrorBoundary;

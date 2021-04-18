@@ -16,7 +16,7 @@ function App() {
 
     return (
         user 
-            ? (<Container className="position-relative">
+            ? (<Container className='position-relative'>
                 <Header />
                 <ErrorBoundary 
                     fallback={ErrorFallback}

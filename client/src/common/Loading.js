@@ -9,7 +9,7 @@ const style = {
 };
 
 const Loading = () => (
-    <Spinner type="grow" style={style} className="position-absolute" color="secondary" />
+    <Spinner type='grow' style={style} className='position-absolute' color='secondary' />
 );
 
 export default Loading;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { WordAPI } from '../../api';
 import { Card } from './';
 
@@ -29,7 +30,7 @@ const CardBack = (props) => {
         }
     }
 
-    function deleteWord(word) {
+    function deleteWord() {
         setIsDeleting(true);
         WordAPI.deleteWord(wordId)
             .catch(handleError);
@@ -103,5 +104,13 @@ const CardBack = (props) => {
         </Card>
     );
 }
+
+CardBack.propTypes = {
+    children: PropTypes.node,
+    word: PropTypes.string,
+    wordId: PropTypes.string,
+    definition: PropTypes.string,
+    synonyms: PropTypes.array,
+};
 
 export default CardBack;
