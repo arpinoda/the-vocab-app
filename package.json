@@ -1,35 +1,9 @@
 {
-  "name": "wordapp",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "private": true,
-  "jest": {
-    "setupFilesAfterEnv": [
-      "./tests/setup.js"
-    ],
-    "testEnvironment": "node"
-  },
-  "scripts": {
-    "start": "node index.js",
-    "client": "npm run start --prefix client",
-    "server": "nodemon index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/arpinoda/wordapp.git"
-  },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/arpinoda/wordapp/issues"
-  },
-  "homepage": "https://github.com/arpinoda/wordapp#readme",
+  "description": "",
   "dependencies": {
     "cookie-session": "^1.4.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.3",
     "node-fetch": "^2.6.1",
@@ -41,9 +15,36 @@
   },
   "devDependencies": {
     "concurrently": "^6.0.0",
-    "dotenv": "^8.2.0",
     "jest": "^26.6.3",
     "nodemon": "^2.0.7",
     "puppeteer": "^8.0.0"
-  }
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "homepage": "https://github.com/arpinoda/the-vocab-app#readme",
+  "license": "ISC",
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./tests/setup.js"
+    ],
+    "testEnvironment": "node"
+  },
+  "main": "index.js",
+  "name": "the-vocab-app",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arpinoda/wordapp.git"
+  },
+  "scripts": {
+    "build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "npm run build",
+    "server": "nodemon index.js",
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "version": "1.0.0"
 }

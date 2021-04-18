@@ -18,6 +18,13 @@ script:
   - nohup npm run start &
   - sleep 3
   - npm run test
+deploy:
+  provider: heroku
+  api_key: 
+    secure: "10+N46jgAeG4bbGY+sClIv1lb7xMjEIJWBQo1QqJOKPUhA2ovddIjeuZhGEQLVNp4jy5qwu+9YalR19PQWHd48SVkC0Dgre6l6z6LvPEsoZ2y0yNd2LFkMiOkXmjbrBD0oC5MJ3bt2pLJ1SD5xpkRKY5ZupSRNAj9pd3mx7TwrSUwmRPBMtIqCRzhyMAcUgVJ3d7eD3MXPGo4j2n2SFE9wgSzMH1uMobUFlAzKdqhQdL+uflPK+9ZvTCItL3OlsD8prA4fOp1hU8hvDtfxm3ktd/BfWzx/1Oo8dM3lzFpjyylvhBAXKKS0YYgEdniL7doDGSpnqfijYxeqWd8tV4SLT7CnFOImTgYyDx3Qev9RXHWZDbc4MPEP902JK50gJGkJI10WDD3YBIB/fCa2r0m+0A0cwZX/4qrjKhdsL/n9UktlbzOxolu72Lwqucte3HPWNA+r3PpABqjrFqWrHjjdzO6jUMG5DnrTBISKeG0vViT+jYZ6ShBUrhfEnueTLTakcCHLzYkkglOdAYqPMcsZYyCmIYlrEnRwtLd1hRYmsmKOXdxkuN9oTWt032Uym3Ouro4n/2GPFhw5BJI24NW+HshH/KOUq06fos8ygIfwIP2PwZMdo3dKn0thqiNnWkF75EZsEWwKRstrMucTY6l3l5m25YpmdrVu85vpZk/rc="
+  app: the-vocab-app
+  on: main
+
 
   # nohup         - If shell is closed, don't kill anything created by this command
   # npm run start - Runs the server
