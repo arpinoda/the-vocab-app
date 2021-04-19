@@ -42,7 +42,7 @@ ErrorBoundary.defaultProps = {
 }
 
 ErrorBoundary.propTypes = {
-    fallback: PropTypes.instanceOf(Element),
+    fallback: PropTypes.func,
     onRetry: PropTypes.func,
 }
 

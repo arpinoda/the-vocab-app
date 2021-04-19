@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Loading } from './common';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import './common/ReactGA';
 
 import { AppStateProvider , ErrorBoundary, ErrorFallback } from './common';
 

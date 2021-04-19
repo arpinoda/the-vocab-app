@@ -1,9 +1,8 @@
 import React, { Suspense } from 'react';
 import { AuthAPI } from './api';
-import { ErrorBoundary } from './common';
+import { ErrorBoundary, ErrorFallback } from './common';
 import { Container } from 'reactstrap';
 
-const ErrorFallback = React.lazy(() => import('./common/ErrorFallback'));
 const Dashboard = React.lazy(() => import('./dashboard/Dashboard'));
 const Header = React.lazy(() => import('./dashboard/Header'));
 const Loading = React.lazy(() => import('./common/Loading'));

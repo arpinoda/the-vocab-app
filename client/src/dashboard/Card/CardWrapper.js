@@ -169,11 +169,11 @@ CardWrapper.propTypes = {
     data: PropTypes.object,
     drag: PropTypes.func,
     i: PropTypes.number,
-    rot: PropTypes.number,
-    rotX: PropTypes.number,
-    scale: PropTypes.number,
-    x: PropTypes.number,
-    y: PropTypes.number,
+    rot: PropTypes.object,
+    rotX: PropTypes.object,
+    scale: PropTypes.object,
+    x: PropTypes.object,
+    y: PropTypes.object,
 };
 
 export default CardWrapper;
